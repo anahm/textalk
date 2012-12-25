@@ -6,29 +6,41 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-   
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"><
+            script>
+        <script type="text/javascript"
+            src="bootstrap/js/bootstrap.min.js"></script>   
         <script type="text/javascript"
             src="mathjax-MathJax-24a378e/MathJax.js?config=default"></script>
         <style>
+            .container {
+                width:1000px;
+            }
             input {
-            	float:left;
+            	width:100%;
+            	padding:10px;
+            }
+            .text_input {
+                margin:10px;
+                margin-top:10px;
+            }
+            .btn {
+            	margin:4px;
+            	width:100%;
             }
             .output {
                 border: 1px solid black;
                 padding: 1em;
-                width: auto;
                 // position: absolute;
-                float:right;
                 top: 0;
                 left: 2em;
-                min-width: 20em;
             }
             .box {
-            	position:relative;
             	height: 120px;
             }
             .input_panel {
-                float:left;
             }
         </style>
     </head>
@@ -53,7 +65,6 @@
                 }
 
                 QUEUE.Push(function () {
-                	alert(math);
                     math = MathJax.Hub.getAllJax(math)[0];
                     if (math != null) {
                         box = document.getElementById("box");
@@ -69,41 +80,70 @@
             })();
         </script>
 
+        <div class="container">
         <br/>
 
-        <div class="box" id="box">
-            <div class="button_panel">
-                <button id="insert_above">insert line above</button>
-                <button id="delete">delete line</button>
-                <button id="insert_below">insert line below</button>
-            <input class="MathInput" size="80" onchange="UpdateMath(this.value,
-                'MathOutput')"/>
-            <div id="MathOutput" class="output">
+        <div class="box row" id="box">
+            <div class="button_panel span2">
+                <button id="insert_above" class="btn btn-primary">insert line above</button>
+                </br>
+                <button id="delete" class="btn btn-primary">delete line</button>
+                </br>
+                <button id="insert_below" class="btn btn-primary">insert line below</button>
+            </div>
+            <div class="text_input span6">
+                <input class="MathInput" size="80" 
+                    onchange="UpdateMath(this.value,'MathOutput')"/>
+            </div>
+            <div id="MathOutput" class="output span4">
                 $$ {} $$
             </div>
         </div>
 
         <br/>
-
-        <div class="box" id="box">
-            <input class="MathInput" size="80" onchange="UpdateMath(this.value,
-                'MathOutput2')"/>
-            <div id="MathOutput2" class="output">
+        <br/>
+        <div class="box row" id="box">
+            <div class="button_panel span2">
+                <button id="insert_above" class="btn btn-primary">insert line above</button>
+                </br>
+                <button id="delete" class="btn btn-primary">delete line</button>
+                </br>
+                <button id="insert_below" class="btn btn-primary">insert line below</button>
+            </div>
+            <div class="text_input span6">
+                <input class="MathInput" size="80" 
+                    onchange="UpdateMath(this.value,'MathOutput2')"/>
+            </div>
+            <div id="MathOutput2" class="output span4">
                 $$ {} $$
             </div>
         </div>
 
-        <div class="box" id="box">
-            <input class="MathInput" size="80" onchange="UpdateMath(this.value,
-                'MathOutput3')"/>
-            <div id="MathOutput3" class="output">
+        <br/>
+        <br/>
+
+
+        <div class="box row" id="box">
+            <div class="button_panel span2">
+                <button id="insert_above" class="btn btn-primary">insert line above</button>
+                </br>
+                <button id="delete" class="btn btn-primary">delete line</button>
+                </br>
+                <button id="insert_below" class="btn btn-primary">insert line below</button>
+            </div>
+            <div class="text_input span6">
+                <input class="MathInput" size="80" 
+                    onchange="UpdateMath(this.value,'MathOutput3')"/>
+            </div>
+            <div id="MathOutput3" class="output span4">
                 $$ {} $$
             </div>
         </div>
 
+        <br/>
+        <br/>
 
-
-
+    </div>
         <script>
             if (MathJax.Hub.Browser.isMSIE) {
                 MathInput.onkeypress = function() {
