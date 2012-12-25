@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>merry xmas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+   
+        <script type="text/javascript"
+            src="mathjax-MathJax-24a378e/MathJax.js?config=default"></script>
+        <style>
+            input {
+            	float:left;
+            }
+            .output {
+                border: 1px solid black;
+                padding: 1em;
+                width: auto;
+                // position: absolute;
+                float:right;
+                top: 0;
+                left: 2em;
+                min-width: 20em;
+            }
+            .box {
+            	position:relative;
+            	height: 120px;
+            }
+            .input_panel {
+                float:left;
+            }
+        </style>
+    </head>
+    <body>
+
+        <script>
+            //
+            //  Use a closure to hide the local variables from the
+            //  global namespace
+            //
+            (function () {
+                var QUEUE = MathJax.Hub.queue;  
+                var math = null, box = null;   
+                var final_dest = "MathOutput";
+
+                var HIDEBOX = function () {
+                    box.style.visibility = "hidden"
+                }
+                
+                var SHOWBOX = function () {
+                    box.style.visibility = "visible"
+                }
+
+                QUEUE.Push(function () {
+                	alert(math);
+                    math = MathJax.Hub.getAllJax(math)[0];
+                    if (math != null) {
+                        box = document.getElementById("box");
+                        SHOWBOX();
+                    }
+                });
+
+                window.UpdateMath = function (TeX, div) {
+                	math = MathJax.Hub.getAllJax(div)[0];
+                    QUEUE.Push(HIDEBOX,
+                        ["Text",math,"\\displaystyle{"+TeX+"}"],SHOWBOX);
+                }
+            })();
+        </script>
+
+        <br/>
+
+        <div class="box" id="box">
+            <div class="button_panel">
+                <button id="insert_above">insert line above</button>
+                <button id="delete">delete line</button>
+                <button id="insert_below">insert line below</button>
+            <input class="MathInput" size="80" onchange="UpdateMath(this.value,
+                'MathOutput')"/>
+            <div id="MathOutput" class="output">
+                $$ {} $$
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="box" id="box">
+            <input class="MathInput" size="80" onchange="UpdateMath(this.value,
+                'MathOutput2')"/>
+            <div id="MathOutput2" class="output">
+                $$ {} $$
+            </div>
+        </div>
+
+        <div class="box" id="box">
+            <input class="MathInput" size="80" onchange="UpdateMath(this.value,
+                'MathOutput3')"/>
+            <div id="MathOutput3" class="output">
+                $$ {} $$
+            </div>
+        </div>
+
+
+
+
+        <script>
+            if (MathJax.Hub.Browser.isMSIE) {
+                MathInput.onkeypress = function() {
+                    if (window.event && window.event.keyCode === 13) {
+                        this.blur();
+                        this.focus()
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>
+

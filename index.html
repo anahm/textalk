@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+
+    <script type="text/javascript" 
+            src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" 
+            src="mathjax-MathJax-24a378e/MathJax.js?config=default"></script>
+    <script type="text/javascript" src="functions.js"></script>
+    <title> merry xmas </title> 
+</head>
+
+<body>
+
+    hello world
+
+    <script>
+        (function () {
+            var queue = MathJax.Hub.queue;
+            var math = null, box = null;
+
+            var HIDEBOX = function() {
+                box.style.visibility = "hidden"
+            }
+
+            var SHOWBOX = function() {
+                box.style.visibility = "visible"
+            }
+
+            queue.Push(function() {
+                math = MathJax.Hub.getAllJax("MathOutput")[0];
+                box = document.getElementById("box");
+                SHOWBOX();
+            });
+
+            window.UpdateMath = function (TeX) {
+                queue.Push(HIDEBOX, ["text", math, "\\displaystyle{"+TeX+"}"],
+                SHOWBOX);
+            }
+        })();
+    </script>
+
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+
+
+        First name: <input class="tex" id="MathInput" name="firstname"
+        onchange="UpdateMath(this.value)"><br>
+        Last name: <input class="tex" type="text" name="lastname">
+
+    </br>
+
+    <div class="box" id="box">
+        <div id="MathOutput" class="output">
+            $$ {} $$
+        </div>
+    </div>
+
+</body>
+
+</html>
