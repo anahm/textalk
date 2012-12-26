@@ -7,6 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/print.css" type="text/css" media="print"/>
         <script type="text/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"><
             script>
@@ -14,135 +16,151 @@
             src="bootstrap/js/bootstrap.min.js"></script>   
         <script type="text/javascript"
             src="mathjax-MathJax-24a378e/MathJax.js?config=default"></script>
-        <style>
-            .container {
-                width:1000px;
-            }
-            input {
-            	width:100%;
-            	padding:10px;
-            }
-            .text_input {
-                margin:10px;
-                margin-top:10px;
-            }
-            .btn {
-            	margin:4px;
-            	width:100%;
-            }
-            .output {
-                border: 1px solid black;
-                padding: 1em;
-                // position: absolute;
-                top: 0;
-                left: 2em;
-            }
-            .box {
-            	height: 120px;
-            }
-            .input_panel {
-            }
-        </style>
+        <script type="text/javascript" src="js/jquery.zclip.min.js"></script>
     </head>
     <body>
 
-        <script>
-            //
-            //  Use a closure to hide the local variables from the
-            //  global namespace
-            //
-            (function () {
-                var QUEUE = MathJax.Hub.queue;  
-                var math = null, box = null;   
-                var final_dest = "MathOutput";
+        <script type="text/javascript" src="js/scripts.js"> </script>
+        <script type="text/javascript" src="js/copy_script.js"></script>
 
-                var HIDEBOX = function () {
-                    box.style.visibility = "hidden"
-                }
-                
-                var SHOWBOX = function () {
-                    box.style.visibility = "visible"
-                }
+        <div class="container-fluid">
 
-                QUEUE.Push(function () {
-                    math = MathJax.Hub.getAllJax(math)[0];
-                    if (math != null) {
-                        box = document.getElementById("box");
-                        SHOWBOX();
-                    }
-                });
+        <div class="navbar navbar-static-top navbar-inverse">
+            <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="#">Welcome</a></li>
+                <li class="divider-vertical"></li>
+                <li><i class="icon-download-alt icon-white"></i></li>
+            </ul>
+            </div>
+        </div>
 
-                window.UpdateMath = function (TeX, div) {
-                	math = MathJax.Hub.getAllJax(div)[0];
-                    QUEUE.Push(HIDEBOX,
-                        ["Text",math,"\\displaystyle{"+TeX+"}"],SHOWBOX);
-                }
-            })();
-        </script>
 
-        <div class="container">
+        <div class="row-fluid">
+        <div class="span9">
         <br/>
 
         <div class="box row" id="box">
-            <div class="button_panel span2">
-                <button id="insert_above" class="btn btn-primary">insert line above</button>
-                </br>
-                <button id="delete" class="btn btn-primary">delete line</button>
-                </br>
-                <button id="insert_below" class="btn btn-primary">insert line below</button>
+            <div class="span1">
+                <div class="button_panel btn-group btn-group-vertical span1">
+                    <button class="insert_above btn-primary">
+                        <i class="icon-white icon-chevron-up"></i>
+                    </button>
+                    </br>
+                    <button class="delete btn-primary">
+                        <i class="icon-white icon-remove"></i>
+                    </button>
+                    </br>
+                    <button class="insert_below btn-primary">
+                        <i class="icon-white icon-chevron-down"></i>
+                    </button>
+                </div>
             </div>
             <div class="text_input span6">
-                <input class="MathInput" size="80" 
+                <input class="MathInput" size="80" placeholder="insert tex here"
                     onchange="UpdateMath(this.value,'MathOutput')"/>
             </div>
-            <div id="MathOutput" class="output span4">
+            <div id="MathOutput" class="output span4 print">
                 $$ {} $$
             </div>
         </div>
 
-        <br/>
-        <br/>
         <div class="box row" id="box">
-            <div class="button_panel span2">
-                <button id="insert_above" class="btn btn-primary">insert line above</button>
-                </br>
-                <button id="delete" class="btn btn-primary">delete line</button>
-                </br>
-                <button id="insert_below" class="btn btn-primary">insert line below</button>
+            <div class="span1">
+                <div class="button_panel btn-group btn-group-vertical span1">
+                    <button class="btn-primary insert_above">
+                    <i class="icon-white icon-chevron-up"></i>
+                    </button>
+                    </br>
+                    <button class="delete btn-primary">
+                    <i class="icon-white icon-remove"></i>  
+                    </button>
+                    </br>
+                    <button class="insert_below btn-primary">
+                    <i class="icon-white icon-chevron-down"></i>
+                    </button>
+                </div>
             </div>
             <div class="text_input span6">
-                <input class="MathInput" size="80" 
+                <input class="MathInput" size="80" placeholder="insert tex here"
                     onchange="UpdateMath(this.value,'MathOutput2')"/>
             </div>
-            <div id="MathOutput2" class="output span4">
+            <div id="MathOutput2" class="output span4 print">
                 $$ {} $$
             </div>
         </div>
-
-        <br/>
-        <br/>
-
 
         <div class="box row" id="box">
-            <div class="button_panel span2">
-                <button id="insert_above" class="btn btn-primary">insert line above</button>
-                </br>
-                <button id="delete" class="btn btn-primary">delete line</button>
-                </br>
-                <button id="insert_below" class="btn btn-primary">insert line below</button>
+            <div class="span1">
+                <div class="button_panel btn-group btn-group-vertical span1">
+                    <button class="insert_above btn-primary">
+                    <i class="icon-white icon-chevron-up"></i>
+                    </button>
+                    </br>
+                    <button class="delete btn-primary">
+                    <i class="icon-white icon-remove"></i>
+                    </button>
+                    </br>
+                    <button class="insert_below btn-primary">
+                    <i class="icon-white icon-chevron-down"></i>
+                    </button>
+                </div>
             </div>
             <div class="text_input span6">
-                <input class="MathInput" size="80" 
+                <input class="MathInput" size="80" placeholder="insert tex here"
+
                     onchange="UpdateMath(this.value,'MathOutput3')"/>
             </div>
-            <div id="MathOutput3" class="output span4">
+            <div id="MathOutput3" class="output span4 print">
                 $$ {} $$
             </div>
         </div>
+    </div> 
 
-        <br/>
-        <br/>
+    <div id="sidebar" class="span2">
+        <h2>Useful Latex Commands</h2>
+        <table>
+        <tr>
+            <td>fraction:</td>
+            <td>\frac{a}{b}</td>
+            <td><button class="copy-btn">
+                <div class=".copy-target"><a class="copy-tex"
+                href="#">copy</a></div>
+            </button></td>
+        </tr>
+        <tr>
+            <td>superscript:</td>
+            <td>a^{b}</td>
+            <td><button class="copy-btn">copy</button></td>
+        </tr>
+        <tr>
+            <td>subscript:</td>
+            <td>a_{b}</td>
+            <td><button class="copy-btn">copy</button></td>
+        </tr>
+        <tr>
+            <td>matrix:</td>
+            <td>begin{matrix} </br>
+                a & b \\ </br>
+                c & d \\ </br>
+                \end{matrix}
+            </td>
+            <td><button class="copy-btn">copy</button></td>
+        </tr>
+        <tr>
+            <td>grid</td>
+            <td>\begin{tabular} {|c|c|} </br>
+                \hline</br>
+                a & b \\ </br>
+                c & d \\ </br>
+                \hline </br>
+                \end{tabular}
+            </td>
+            <td><button class="copy-btn">copy</button></td>
+        </table>
 
+    </div>
+    </div>
     </div>
         <script>
             if (MathJax.Hub.Browser.isMSIE) {

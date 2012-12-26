@@ -1,0 +1,65 @@
+/*
+ * styles.css
+ *
+ * 12.25.12
+ */
+
+body {
+    height: 100%;
+    width: 100%;
+}
+.container {
+    width:1000px;
+}
+input {
+    width:100%;
+    padding:5px;
+    margin-top:3%; 
+}
+.text_input {
+}
+.btn {
+//    margin:4px;
+//    width:100%;
+    text-align:center;
+    horizontal-align:middle;
+}
+.output {
+    // border: 1px solid black;
+    //padding: 1em;
+    // position: absolute;
+    // top: 0;
+    left:2em;
+}
+.box {
+    height:70px;
+}
+.input_panel {
+}
+.button_panel {
+//    padding-right:15px;
+    height:70px;
+    position:relative;
+    margin-right:auto;
+    margin-top:-13%;
+}
+.span12 {
+    border: 1px solid black;
+    float: left;
+}
+#sidebar {
+    float: right;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 20px;
+    height: 80%;
+}
+h2 {
+    text-align:right;
+}
+tr {
+    margin: 5px;
+}
+.copy-target {
+    position:relative;
+}
